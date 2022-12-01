@@ -1,11 +1,11 @@
+require "sinatra/reloader"
 require "httparty"
-require "nats/io/client"
+require "nats/client"
 require "securerandom"
 require "pry"
 
 configure do
-  nats = NATS::IO::Client.new;
-  nats.connect("nats")
+  nats = NATS.connect("nats")
   nats.on_error do |e|
     raise e
   end
